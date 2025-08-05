@@ -1,0 +1,40 @@
+{
+  "name": "express-redis-simple-cache",
+  "version": "0.0.1",
+  "description": "A simple and effective Redis-based caching middleware for Express.js APIs.",
+  "keywords": [
+    "express",
+    "expressjs",
+    "express-middleware",
+    "redis",
+    "redis-cache",
+    "http-cache",
+    "route-cache",
+    "api-cache",
+    "express-cache",
+    "middleware",
+    "cache",
+    "ttl",
+    "ioredis",
+    "nodejs",
+    "performance",
+    "server-side-cache",
+    "express-redis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://wug.ge/express-redis-simple-cache"
+  },
+  "license": "MIT",
+  "author": "Daniel Wuggenig",
+  "type": "module",
+  "exports": {
+   ".": {
+     "import": "./index.ts"
+   }
+  },
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  }
+}
