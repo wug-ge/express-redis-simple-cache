@@ -1,6 +1,6 @@
 {
   "name": "express-redis-simple-cache",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple and effective Redis-based caching middleware for Express.js APIs.",
   "keywords": [
     "express",
@@ -33,7 +33,11 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "LICENSE", "README.md"],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc"
