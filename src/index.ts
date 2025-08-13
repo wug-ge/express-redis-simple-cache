@@ -41,7 +41,7 @@ export function cache(route: Route) {
   if (route.cache) {
     return cacheMiddleware(route);
   } else {
-    return (req: Request, res: Response, next: NextFunction) => next();
+    return async (req: Request, res: Response, next: NextFunction) => next();
   }
 }
 
