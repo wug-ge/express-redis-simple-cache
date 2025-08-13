@@ -29,13 +29,13 @@
   "author": "Daniel Wuggenig",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./index.ts"
-    }
+    ".": "./dist/index.js"
   },
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "dependencies": {
     "redis": "^5.7.0"
