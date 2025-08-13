@@ -1,6 +1,6 @@
 {
   "name": "express-redis-simple-cache",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple and effective Redis-based caching middleware for Express.js APIs.",
   "keywords": [
     "express",
