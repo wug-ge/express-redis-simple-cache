@@ -42,9 +42,9 @@
     "test": "jest",
     "build": "npx tsup src/index.ts --format esm --dts --clean --sourcemap",
     "prepublishOnly": "npm run build && npm run test",
-    "release:patch": "node ./scripts/release.js patch",
-    "release:minor": "node ./scripts/release.js minor",
-    "release:major": "node ./scripts/release.js major"
+    "release:patch": "node ./scripts/release.ts patch",
+    "release:minor": "node ./scripts/release.ts minor",
+    "release:major": "node ./scripts/release.ts major"
   },
   "dependencies": {
     "redis": "^5.7.0"
