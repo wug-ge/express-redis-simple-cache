@@ -37,15 +37,15 @@ export async function stopCache(redis: ReturnType<typeof createClient>): Promise
   }
 }
 
-export function cache(route: Route) {
+export function cache(route: Route): Function {
   if (route.cache) {
     return cacheMiddleware(route);
   } else {
-    return async (req: Request, res: Response, next: NextFunction) => next();
+    return (req: Request, res: Response, next: NextFunction) => next();
   }
 }
 
-async function cacheMiddleware(route: Route) {
+function cacheMiddleware(route: Route) {
   if (!redis || !redis.isReady) {
     log('Redis client is not initialized. Please call setupCache first. Cache will not be applied and next function be called.', 'error');
     return (req: Request, res: Response, next: NextFunction) => next();
