@@ -151,6 +151,53 @@ async function fetchCart(cartId) {
 - Choose an appropriate `expire` time. Shorter TTLs keep data fresh but may increase load on your backend; longer TTLs provide better performance but may return slightly stale data.
 - Use the `debug` log level during development to trace cache hits and misses.
 
+### Additional Notes on `per-auth-token` and Cookie-Based Caching
+
+#### How `per-auth-token` Works
+When using `type: 'per-auth-token'`, the middleware attempts to extract an authentication token to include in the cache key. It looks for the token in the following locations, in order:
+
+1. **Authorization Header**: The middleware checks for a Bearer token in the `Authorization` header (e.g., `Authorization: Bearer <token>`).
+All headers being checked:
+  - Authorization
+  -  X-Auth-Token
+  -  X-Access-Token
+  -  X-Refresh-Token
+  -  X-ID-Token
+  -  X-API-key
+  -  Token
+  -  Auth-Token
+2. **Cookies**: The middleware looks for the following cookies, in order:
+  - authToken
+  - accessToken
+  - refreshToken
+  - idToken
+  - jwt
+  - token
+  - sessionToken
+  - auth_token
+  - access_token
+  - refresh_token
+  - bearer_token
+
+If none of these are present, caching is bypassed for the request.
+
+#### Cookie-Based Caching Requirements
+For caching types that rely on cookies (e.g., `per-auth-token` or `per-custom-cookie`), you must use a middleware that populates `req.cookies`. One popular choice is the `cookie-parser` package. Install it with:
+
+```bash
+npm install cookie-parser
+```
+
+Then, include it in your Express application before using the caching middleware:
+
+```javascript
+import cookieParser from 'cookie-parser';
+
+app.use(cookieParser());
+```
+
+This ensures that `req.cookies` is populated, allowing the caching middleware to function correctly when relying on cookies.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
